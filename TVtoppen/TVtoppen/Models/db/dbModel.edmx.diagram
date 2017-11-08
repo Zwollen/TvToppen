@@ -8,6 +8,9 @@
         <EntityTypeShape EntityType="TVtoppenModel.Person" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TVtoppenModel.Roles" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
         <AssociationConnector Association="TVtoppenModel.FK_Person_ToTable" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TVtoppenModel.Channel" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="TVtoppenModel.Program" Width="1.5" PointX="3" PointY="5" />
+        <AssociationConnector Association="TVtoppenModel.FK_Program_Channel" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,7 +12,7 @@ namespace TVtoppen.Controllers
 {
     public class AccountController : Controller
     {        
-        dbOperations db = new dbOperations();
+       private dbOperations db = new dbOperations();
         // GET: Account
         public ActionResult Login()
         {
