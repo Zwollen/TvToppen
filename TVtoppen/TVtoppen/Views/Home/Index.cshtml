@@ -2,20 +2,32 @@
 @{
     ViewBag.Title = "Hem";
 }
-
+@{ 
+    var todayDate = DateTime.Now.Date;
+}
+<button class="tablink" onclick="openDay('Idag', this, 'gray')" id="defaultOpen">Idag</button>
+<button class="tablink" onclick="openDay('Imorgon', this, 'gray')">Imorgon</button>
+<button class="tablink" onclick="openDay('day1', this, 'gray')">@todayDate.AddDays(2).ToString("yyyy-MM-dd")</button>
+<button class="tablink" onclick="openDay('day2', this, 'gray')">@todayDate.AddDays(3).ToString("yyyy-MM-dd")</button>
+<button class="tablink" onclick="openDay('day3', this, 'gray')">@todayDate.AddDays(4).ToString("yyyy-MM-dd")</button>
+<button class="tablink" onclick="openDay('day4', this, 'gray')">@todayDate.AddDays(5).ToString("yyyy-MM-dd")</button>
+<button class="tablink" onclick="openDay('day5', this, 'gray')">@todayDate.AddDays(6).ToString("yyyy-MM-dd")</button>
 
 <div class="channels">
     <section>
         <h1>SVT 1</h1>        
             <table class="table">               
                 @foreach (var item in Model) {
-                    if (item.ChannelId == 1)
+                    //if (item.Date == DateTime.Now.ToString("yyyy-MM-dd"))
+                    //{
+                    if (item.Channel.Channel1 == "SVT1")
                     {
                     <tr>
                         <td> @Html.DisplayFor(modelItem => item.StartTime) </td>                        
                         <td> @Html.DisplayFor(modelItem => item.Title) </td>
                     </tr>
                     }
+                    //}
                 }
             </table>       
     </section>
@@ -24,7 +36,7 @@
         <table class="table">
             @foreach (var item in Model)
             {
-                if (item.ChannelId == 2)
+                if (item.Channel.Channel1 == "SVT2")
                 {
                     <tr>
                         <td> @Html.DisplayFor(modelItem => item.StartTime) </td>
@@ -40,7 +52,7 @@
         <table class="table">
             @foreach (var item in Model)
             {
-                if (item.ChannelId == 3)
+                if (item.Channel.Channel1 == "TV4")
                 {
                     <tr>
                         <td> @Html.DisplayFor(modelItem => item.StartTime) </td>
@@ -55,7 +67,7 @@
         <table class="table">
             @foreach (var item in Model)
             {
-                if (item.ChannelId == 4)
+                if (item.Channel.Channel1 == "TV6")
                 {
                     <tr>
                         <td> @Html.DisplayFor(modelItem => item.StartTime) </td>
@@ -70,7 +82,7 @@
         <table class="table">
             @foreach (var item in Model)
             {
-                if (item.ChannelId == 5)
+                if (item.Channel.Channel1 == "TV10")
                 {
                     <tr>
                         <td> @Html.DisplayFor(modelItem => item.StartTime) </td>
@@ -81,3 +93,21 @@
         </table>
     </section>    
 </div>
+<script>
+function openDay(dayName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(dayName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+
+}
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>

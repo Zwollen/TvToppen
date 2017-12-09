@@ -200,6 +200,14 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\facebook.png" />
+    <Content Include="Content\Images\howimet.jpg" />
+    <Content Include="Content\Images\logo2.png" />
+    <Content Include="Content\Images\rapport.jpg" />
+    <Content Include="Content\Images\scrubs.jpg" />
+    <Content Include="Content\Images\seinfeld.jpg" />
+    <Content Include="Content\Images\twitter.png" />
+    <Content Include="Content\Images\youtube.png" />
     <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />

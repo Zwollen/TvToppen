@@ -18,7 +18,7 @@
 #logo
 {	
 	float: left;
-	background: url(img/logo2.png) no-repeat center;
+	background: url('Images/logo2.png') no-repeat center;
 	width: 124px;
 	height: 90px;
 	
@@ -238,3 +238,38 @@ ul.social li img
 	background: #404040;	
 	}
 }
+
+
+
+
+
+.tablink {
+    background-color: #555;
+    color: white;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 18px;
+    width: 14.286%;
+    
+}
+
+.tablink:hover {
+    background-color: #777;
+}
+
+
+.tabcontent {
+    color: white;
+    display: none;
+    padding: 50px;
+    text-align: center;
+}
+
+/*#SVT1 {background-color:red;}
+#SVT2 {background-color:green;}
+#SVT4 {background-color:blue;}
+#SVT6 {background-color:purple;}
+#SVT10 {background-color:purple;}*/
