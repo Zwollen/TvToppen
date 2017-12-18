@@ -14,6 +14,12 @@ namespace TVtoppen.Models.db
     
     public partial class Program
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Program()
+        {
+            this.News = new HashSet<News>();
+        }
+    
         public int Id { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
@@ -25,5 +31,7 @@ namespace TVtoppen.Models.db
         public Nullable<System.DateTime> EndTime { get; set; }
     
         public virtual Channel Channel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<News> News { get; set; }
     }
 }

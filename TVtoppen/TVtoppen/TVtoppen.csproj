@@ -183,6 +183,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dbModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\db\News.cs">
+      <DependentUpon>dbModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\db\Person.cs">
       <DependentUpon>dbModel.tt</DependentUpon>
     </Compile>

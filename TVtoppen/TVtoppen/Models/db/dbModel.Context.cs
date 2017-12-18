@@ -31,5 +31,6 @@ namespace TVtoppen.Models.db
         public virtual DbSet<Program> Program { get; set; }
         public virtual DbSet<personchannels> personchannels { get; set; }
         public virtual DbSet<Table> Table { get; set; }
+        public virtual DbSet<News> News { get; set; }
     }
 }

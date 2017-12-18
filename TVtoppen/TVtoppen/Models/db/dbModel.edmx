@@ -12,6 +12,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Channel1" Type="nchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="programid" Type="int" />
+          <Property Name="info" Type="nchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="Person">
           <Key>
             <PropertyRef Name="Id" />
@@ -51,12 +59,6 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Role" Type="nchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="Table">
-          <Key>
-            <PropertyRef Name="personfavid" />
-          </Key>
-          <Property Name="personfavid" Type="int" Nullable="false" />
-        </EntityType>
         <Association Name="FK_Person_ToTable">
           <End Role="Roles" Type="Self.Roles" Multiplicity="0..1" />
           <End Role="Person" Type="Self.Person" Multiplicity="*" />
@@ -78,6 +80,18 @@
             </Principal>
             <Dependent Role="Program">
               <PropertyRef Name="ChannelId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Programid">
+          <End Role="Program" Type="Self.Program" Multiplicity="0..1" />
+          <End Role="News" Type="Self.News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="programid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -107,11 +121,11 @@
         </Association>
         <EntityContainer Name="TVtoppenModelStoreContainer">
           <EntitySet Name="Channel" EntityType="Self.Channel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="personchannels" EntityType="Self.personchannels" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Program" EntityType="Self.Program" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Person_ToTable" Association="Self.FK_Person_ToTable">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Person" EntitySet="Person" />
@@ -119,6 +133,10 @@
           <AssociationSet Name="FK_Program_ToTable" Association="Self.FK_Program_ToTable">
             <End Role="Channel" EntitySet="Channel" />
             <End Role="Program" EntitySet="Program" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Programid" Association="Self.FK_Programid">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="News" EntitySet="News" />
           </AssociationSet>
           <AssociationSet Name="FK_Table_ToTable" Association="Self.FK_Table_ToTable">
             <End Role="Channel" EntitySet="Channel" />
@@ -189,6 +207,11 @@
             <End Role="Person" EntitySet="Person" />
             <End Role="personchannels" EntitySet="personchannels" />
           </AssociationSet>
+          <EntitySet Name="News" EntityType="TVtoppenModel.News" />
+          <AssociationSet Name="FK_Programid" Association="TVtoppenModel.FK_Programid">
+            <End Role="Program" EntitySet="Program" />
+            <End Role="News" EntitySet="News" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Channel">
           <Key>
@@ -214,6 +237,7 @@
           <Property Name="ChannelId" Type="Int32" />
           <NavigationProperty Name="Channel" Relationship="TVtoppenModel.FK_Program_Channel" FromRole="Program" ToRole="Channel" />
           <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="News" Relationship="TVtoppenModel.FK_Programid" FromRole="Program" ToRole="News" />
         </EntityType>
         <Association Name="FK_Program_Channel">
           <End Type="TVtoppenModel.Channel" Role="Channel" Multiplicity="0..1" />
@@ -264,6 +288,27 @@
             </Principal>
             <Dependent Role="personchannels">
               <PropertyRef Name="personid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="programid" Type="Int32" />
+          <Property Name="info" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Program" Relationship="TVtoppenModel.FK_Programid" FromRole="News" ToRole="Program" />
+        </EntityType>
+        <Association Name="FK_Programid">
+          <End Type="TVtoppenModel.Program" Role="Program" Multiplicity="0..1" />
+          <End Type="TVtoppenModel.News" Role="News" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Program">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="News">
+              <PropertyRef Name="programid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -324,10 +369,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table">
-            <EntityTypeMapping TypeName="TVtoppenModel.Table">
-              <MappingFragment StoreEntitySet="Table">
-                <ScalarProperty Name="personfavid" ColumnName="personfavid" />
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="TVtoppenModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="info" ColumnName="info" />
+                <ScalarProperty Name="programid" ColumnName="programid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

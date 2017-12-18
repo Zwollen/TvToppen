@@ -16,7 +16,7 @@ namespace TVtoppen.Controllers
         {
             var program = db.Program;
 
-            //ViewBag.newslist = db.news.ToList();
+            ViewBag.newslist = db.News.ToList();
             return View(program.ToList());
 
         }
