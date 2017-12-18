@@ -29,5 +29,7 @@ namespace TVtoppen.Models.db
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Channel> Channel { get; set; }
         public virtual DbSet<Program> Program { get; set; }
+        public virtual DbSet<personchannels> personchannels { get; set; }
+        public virtual DbSet<Table> Table { get; set; }
     }
 }

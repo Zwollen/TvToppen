@@ -1,0 +1,49 @@
+﻿@model IEnumerable<TVtoppen.Models.db.Program>
+@{
+    ViewBag.Title = "newsinfo";
+}
+@{
+    var kanal = "";
+}
+@foreach (var i in Model)
+{
+    if (i.ChannelId == 1)
+    {
+        kanal = "SVT1";
+    }
+    else if (i.ChannelId == 2)
+    {
+        kanal = "SVT2";
+    }
+    else if (i.ChannelId == 3)
+    {
+        kanal = "TV4";
+    }
+    else if (i.ChannelId == 4)
+    {
+        kanal = "TV6";
+    }
+    else if (i.ChannelId == 5)
+    {
+        kanal = "TV10";
+    }
+}
+@*<Se varför value inte funkar att använda*@
+@*<div id="newsSectionChannelinfo">
+
+    <h1>@kanal</h1>
+
+    @foreach (var item in Model)
+    {
+
+        <div id="newsChannelinfo">
+            <p>
+                @item.Date.Value.ToString("yyyy-MM-dd"),
+                @item.StartTime,
+                @item.ChannelId,
+                @item.Description
+            </p>
+        </div>
+    }
+
+</div>*@

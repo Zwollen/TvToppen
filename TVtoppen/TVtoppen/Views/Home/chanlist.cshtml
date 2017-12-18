@@ -1,0 +1,12 @@
+﻿@model TVtoppen.Models.db.personchannels
+<div id="addFavoriteSection">
+    @using (Html.BeginForm("chanlist", "Home", FormMethod.Post))
+    {
+
+  @Html.DropDownListFor(x => x.channelid, new SelectList(ViewBag.addfavorite, "Value", "Text"))
+
+
+  <input type="submit" value="Lägg till favoriter" id="addchannels" />
+    }
+</div>
+

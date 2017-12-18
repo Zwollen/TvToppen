@@ -11,6 +11,10 @@
         <EntityTypeShape EntityType="TVtoppenModel.Channel" Width="1.5" PointX="0.75" PointY="5.5" />
         <EntityTypeShape EntityType="TVtoppenModel.Program" Width="1.5" PointX="3" PointY="5" />
         <AssociationConnector Association="TVtoppenModel.FK_Program_Channel" />
+        <EntityTypeShape EntityType="TVtoppenModel.personchannels" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="TVtoppenModel.Table" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="TVtoppenModel.FK_Table_ToTable" />
+        <AssociationConnector Association="TVtoppenModel.FK_Table_ToTable_1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

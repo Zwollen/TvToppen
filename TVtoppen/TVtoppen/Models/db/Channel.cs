@@ -18,12 +18,16 @@ namespace TVtoppen.Models.db
         public Channel()
         {
             this.Program = new HashSet<Program>();
+            this.personchannels = new HashSet<personchannels>();
         }
     
         public int Id { get; set; }
         public string Channel1 { get; set; }
+        public string Channel11 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Program> Program { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<personchannels> personchannels { get; set; }
     }
 }

@@ -12,18 +12,13 @@ namespace TVtoppen.Models.db
     using System;
     using System.Collections.Generic;
     
-    public partial class Program
+    public partial class personchannels
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string Date { get; set; }
-        public string StartTime { get; set; }
-        public string RunTime { get; set; }
-        public string Description { get; set; }
-        public string Genre { get; set; }
-        public Nullable<int> ChannelId { get; set; }
-        public Nullable<System.DateTime> EndTime { get; set; }
+        public int personfavid { get; set; }
+        public Nullable<int> channelid { get; set; }
+        public Nullable<int> personid { get; set; }
     
         public virtual Channel Channel { get; set; }
+        public virtual Person Person { get; set; }
     }
 }
